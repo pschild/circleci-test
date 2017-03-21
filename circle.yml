@@ -1,9 +1,0 @@
-dependencies:
-  pre:
-    - npm install -g gulp
-    - npm install -g gulp-util
-    - gulp create-config --env=prod
-
-test:
-  override:
-    - gulp test
