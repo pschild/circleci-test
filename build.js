@@ -4,6 +4,7 @@ module.exports={"tacos":"delicious"}
 var config = require('./config.json');
 
 (function () {
+    console.log(123);
     console.log(config);
 })();
 
