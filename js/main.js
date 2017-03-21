@@ -1,1 +1,5 @@
-console.log('Hello World');
+var config = require('./config.json');
+
+(function () {
+    console.log(config);
+})();

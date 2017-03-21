@@ -5,6 +5,8 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
+var fs = require('fs');
+var gutil = require('gulp-util');
 
 function compile(watch) {
     var bundler = watchify(
@@ -43,10 +45,17 @@ function watch() {
     return compile(true);
 }
 
-gulp.task('build', function () {
+gulp.task('create-config', function(cb) {
+    fs.writeFile('./js/config.json', JSON.stringify({
+        env: gutil.env.env,
+        tacos: 'delicious'
+    }), cb);
+});
+
+gulp.task('build', ['create-config'], function () {
     return compile();
 });
-gulp.task('watch', function () {
+gulp.task('watch', ['create-config'], function () {
     return watch();
 });
 gulp.task('test', function () {
